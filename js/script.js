@@ -5,7 +5,13 @@ let pokemonList = [
 ];
 
 for (let i = 0; i < pokemonList.length; i++) {
-  document.write(
-    `${pokemonList[i].name} (${pokemonList[i].height} height). / `
-  );
+  if (pokemonList[i].height > 0.6) {
+    document.write(
+      `<p>${pokemonList[i].name} (${pokemonList[i].height} height). - Wow, that's big! </p><br>`
+    );
+  } else {
+    document.write(
+      `<p>${pokemonList[i].name} (${pokemonList[i].height} height). </p><br> `
+    );
+  }
 }
