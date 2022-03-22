@@ -28,9 +28,17 @@ let pokemonRepository = (function () {
 pokemonRepository.getAll().forEach((pokemon) => {
   if (pokemon.height > 0.6) {
     document.write(
-      `<p>${pokemon.name} (${pokemon.height} height). - Wow, that's big!!! </p><br>`
+      `<p class="biggest-pokemon">${pokemon.name} (${pokemon.height} height). - Wow, that's big!!! </p><br>`
     );
   } else {
-    document.write(`<p>${pokemon.name} (${pokemon.height} height). </p><br> `);
+    document.write(
+      `<p class="normal-pokemon">${pokemon.name} (${pokemon.height} height). </p><br> `
+    );
   }
 });
+
+//Trying to add style to my pokemon list
+function styleMyDiv() {
+  let element = document.getElementById("myDiv");
+  element.classList.add("mystyle");
+}
