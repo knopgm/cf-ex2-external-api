@@ -7,12 +7,46 @@ let pokemonRepository = (function () {
     { name: "Caterpie", height: 0.3, type: ["bug"] },
   ];
 
+  //function to serach for a specific pokemon (to future improvment)
+  // function pokemonSearch(pokemon) {
+  //   pokemonList.filter(pokemon, (index) =>
+  //     pokemonList[index].name === pokemon
+  //       ? pokemonList[index].name
+  //       : `${pokemon} is not in the list.`
+  //   );
+  // }
+
   function getAll() {
     return pokemonList;
   }
 
+  // add a validation for typeof object
   function add(pokemonName, height, type) {
-    pokemonList.push({ name: pokemonName, height: height, type: [type] });
+    let addedName =
+      typeof pokemonName === "string"
+        ? pokemonName
+        : alert("please, fill in a correct pokemon name");
+    let addedHeight =
+      typeof height === "number"
+        ? height
+        : alert("please, fill in a correct pokemon height");
+    let addedType =
+      typeof type === "object"
+        ? type
+        : alert(
+            "please, fill in a correct pokemon type inside [] square brackets"
+          );
+    if (
+      addedName !== undefined &&
+      addedHeight !== undefined &&
+      addedType !== undefined
+    ) {
+      pokemonList.push({
+        name: addedName,
+        height: addedHeight,
+        type: [addedType],
+      });
+    }
   }
 
   return {
