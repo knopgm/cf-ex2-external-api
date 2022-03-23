@@ -7,14 +7,14 @@ let pokemonRepository = (function () {
     { name: "Caterpie", height: 0.3, type: ["bug"] },
   ];
 
-  //function to serach for a specific pokemon (to future improvment)
-  // function pokemonSearch(pokemon) {
-  //   pokemonList.filter(pokemon, (index) =>
-  //     pokemonList[index].name === pokemon
-  //       ? pokemonList[index].name
-  //       : `${pokemon} is not in the list.`
-  //   );
-  // }
+  // function to serach for a specific pokemon
+  function pokemonSearch(pokemon) {
+    const result = pokemonList.filter((element) => {
+      return element.name === pokemon;
+    });
+
+    return result;
+  }
 
   function getAll() {
     return pokemonList;
@@ -52,6 +52,7 @@ let pokemonRepository = (function () {
   return {
     getAll: getAll,
     add: add,
+    searchByName: pokemonSearch,
   };
 })();
 
