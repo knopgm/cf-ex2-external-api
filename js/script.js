@@ -20,6 +20,17 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  // Create a function to render the pokemons list into a buttons list on your web page:
+  function addListItem(pokemon) {
+    let pokeListSelect = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("pokemonButton");
+    listItem.appendChild(button);
+    pokeListSelect.appendChild(listItem);
+  }
+
   // add a validation for typeof object
   function add(pokemonName, height, type) {
     let addedName =
@@ -52,24 +63,16 @@ let pokemonRepository = (function () {
   return {
     getAll: getAll,
     add: add,
+    addListItem: addListItem,
     searchByName: pokemonSearch,
   };
 })();
 
-//Create a function to print ANY pokemon list with its name and height:
-//The same function with foreach for readability:
 //PokemonList is a local variable inside the IIFE. Call getAll to have access to this list
+//Call the addListItem function from inside the IIFE to render all pokemon buttons list:
 
 pokemonRepository.getAll().forEach((pokemon) => {
-  if (pokemon.height > 0.6) {
-    document.write(
-      `<p class="biggest-pokemon">${pokemon.name} (${pokemon.height} height). - Wow, that's big!!! </p><br>`
-    );
-  } else {
-    document.write(
-      `<p class="normal-pokemon">${pokemon.name} (${pokemon.height} height). </p><br> `
-    );
-  }
+  pokemonRepository.addListItem(pokemon);
 });
 
 //Trying to add style to my pokemon list
