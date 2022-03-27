@@ -22,7 +22,6 @@ let pokemonRepository = (function () {
 
   // Create a function to render the pokemons list into a buttons list on your web page:
   function addListItem(pokemon) {
-    console.log(pokemon);
     let pokeListSelect = document.querySelector(".pokemon-list");
     let listItem = document.createElement("li");
     let button = document.createElement("button");
@@ -35,8 +34,8 @@ let pokemonRepository = (function () {
   }
 
   //Create a function to show each pokemon infos
-  function showDetails(listItem) {
-    console.log(listItem);
+  function showDetails(pokeListSelect) {
+    console.log(pokeListSelect);
   }
 
   // add a validation for typeof object
