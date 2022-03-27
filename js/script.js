@@ -1,23 +1,20 @@
 // pokemon repository wrapped into a IIFE to prevent accidentaly accessing to the global state:
 
 let pokemonRepository = (function () {
-  let pokemonList = [
-    { name: "Bulbasaur", height: 0.7, type: ["monster", "grass"] },
-    { name: "Charmander", height: 0.6, type: ["monster", "dragon"] },
-    { name: "Caterpie", height: 0.3, type: ["bug"] },
-  ];
-
-  // function to serach for a specific pokemon
-  function pokemonSearch(pokemon) {
-    const result = pokemonList.filter((element) => {
-      return element.name === pokemon;
-    });
-
-    return result;
-  }
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   function getAll() {
     return pokemonList;
+  }
+
+  // add a validation for typeof object
+  function add(pokemon) {
+    if (typeof pokemon === "object" && "name" in pokemon) {
+      pokemonList.push(pokemon);
+    } else {
+      console.log("Pokemon is not correct");
+    }
   }
 
   // Create a function to render the pokemons list into a buttons list on your web page:
@@ -30,54 +27,82 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
     pokeListSelect.appendChild(listItem);
 
-    button.addEventListener("click", showDetails);
+    button.addEventListener("click", function (event) {
+      showDetails(pokemon);
+    });
+  }
+
+  //create function to fetch pokemon data
+  function loadList() {
+    return fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          add(pokemon);
+          // To console log all pokemons:
+          // console.log(pokemon);
+        });
+      })
+      .catch(function (e) {
+        console.log(e);
+      });
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (details) {
+        // Now we add the details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
   }
 
   //Create a function to show each pokemon infos
-  function showDetails(pokeListSelect) {
-    console.log(pokeListSelect);
-  }
-
-  // add a validation for typeof object
-  function add(pokemonName, height, type) {
-    let addedName =
-      typeof pokemonName === "string"
-        ? pokemonName
-        : alert("please, fill in a correct pokemon name");
-    let addedHeight =
-      typeof height === "number"
-        ? height
-        : alert("please, fill in a correct pokemon height");
-    let addedType =
-      typeof type === "object"
-        ? type
-        : alert(
-            "please, fill in a correct pokemon type inside [] square brackets"
-          );
-    if (
-      addedName !== undefined &&
-      addedHeight !== undefined &&
-      addedType !== undefined
-    ) {
-      pokemonList.push({
-        name: addedName,
-        height: addedHeight,
-        type: [addedType],
-      });
-    }
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
-    searchByName: pokemonSearch,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails,
   };
 })();
 
-//PokemonList is a local variable inside the IIFE. Call getAll to have access to this list
+//PokemonList is a local variable inside the IIFE. Call loadList, and then getAll to have access to this list
 //Call the addListItem function from inside the IIFE to render all pokemon buttons list:
 
-pokemonRepository.getAll().forEach((pokemon) => {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+  // Now the data is loaded!
+  pokemonRepository.getAll().forEach((pokemon) => {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
+
+// function to serach for a specific pokemon
+// function pokemonSearch(pokemon) {
+//   const result = pokemonList.filter((element) => {
+//     return element.name === pokemon;
+//   });
+
+//   return result;
+// }
