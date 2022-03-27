@@ -22,6 +22,7 @@ let pokemonRepository = (function () {
 
   // Create a function to render the pokemons list into a buttons list on your web page:
   function addListItem(pokemon) {
+    console.log(pokemon);
     let pokeListSelect = document.querySelector(".pokemon-list");
     let listItem = document.createElement("li");
     let button = document.createElement("button");
@@ -29,6 +30,13 @@ let pokemonRepository = (function () {
     button.classList.add("pokemonButton");
     listItem.appendChild(button);
     pokeListSelect.appendChild(listItem);
+
+    button.addEventListener("click", showDetails);
+  }
+
+  //Create a function to show each pokemon infos
+  function showDetails(listItem) {
+    console.log(listItem);
   }
 
   // add a validation for typeof object
@@ -74,9 +82,3 @@ let pokemonRepository = (function () {
 pokemonRepository.getAll().forEach((pokemon) => {
   pokemonRepository.addListItem(pokemon);
 });
-
-//Trying to add style to my pokemon list
-function styleMyDiv() {
-  let element = document.getElementById("myDiv");
-  element.classList.add("mystyle");
-}
