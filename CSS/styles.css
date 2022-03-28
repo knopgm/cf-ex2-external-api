@@ -70,23 +70,19 @@ h3 {
   background-color: lightblue;
 }
 
-.biggest-pokemon {
+/* .biggest-pokemon {
   background-color: khaki;
 }
 
 .normal-pokemon {
   background-color: lightcoral;
-}
-
-.mystyle {
-  width: 100%;
-  padding: 25px;
-  background-color: coral;
-  color: white;
-  font-size: 25px;
-  box-sizing: border-box;
-}
+} */
 
 .pokemonButton {
   background-color: lightgreen;
+}
+
+.loading {
+  color: black;
+  background-color: blanchedalmond;
 }

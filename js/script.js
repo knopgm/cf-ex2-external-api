@@ -34,11 +34,13 @@ let pokemonRepository = (function () {
 
   //create function to fetch pokemon data
   function loadList() {
+    showLoadingMessage();
     return fetch(apiUrl)
       .then(function (response) {
         return response.json();
       })
       .then(function (json) {
+        hideLoadingMessage();
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
@@ -56,11 +58,14 @@ let pokemonRepository = (function () {
 
   function loadDetails(item) {
     let url = item.detailsUrl;
+
+    showLoadingMessage();
     return fetch(url)
       .then(function (response) {
         return response.json();
       })
       .then(function (details) {
+        hideLoadingMessage();
         // Now we add the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
@@ -76,6 +81,26 @@ let pokemonRepository = (function () {
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
     });
+  }
+
+  //Display a loading message while data is being loaded
+  function showLoadingMessage() {
+    console.log("Loading...");
+    //create a new element
+    let loadingMessage = document.createElement("h2");
+    loadingMessage.classList.add("loading");
+    loadingMessage.innerText = "Loading...";
+    // //get the reference element
+    let listPokemons = document.querySelector(".pokemon-list");
+
+    //insert the new element into after the reference
+    listPokemons.insertAdjacentElement("afterbegin", loadingMessage);
+  }
+
+  function hideLoadingMessage() {
+    console.log("Pokemon found!");
+    let toRemoveLoading = document.querySelector("h2");
+    toRemoveLoading.remove();
   }
 
   return {
