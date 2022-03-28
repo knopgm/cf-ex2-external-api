@@ -74,13 +74,6 @@ h3 {
   /* background-color: lightgrey; */
   text-align: center;
 }
-/* .biggest-pokemon {
-  background-color: khaki;
-}
-
-.normal-pokemon {
-  background-color: lightcoral;
-} */
 
 .pokemon-list {
   /* background-color: lightpink; */
@@ -107,7 +100,16 @@ h3 {
   background-color: blanchedalmond;
 }
 
-.pokemon-card {
+.pokemon-card__hidden {
+  /* display: none; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
   margin: 10px;
@@ -117,5 +119,15 @@ h3 {
 }
 .pokemon-card__title {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.pokemon-card__close-button {
+  color: var(--pokemon-blue);
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
