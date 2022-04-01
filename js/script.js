@@ -147,7 +147,7 @@ let pokemonRepository = (function () {
     //Create li tag + add pokemon infos:
     let contentListHeight = document.createElement("li");
     contentListHeight.innerText = `Height: ${pokemon.height} 
-    Type: ${pokemon.types}`;
+    Type: ${pokemon.types.map((item) => item.type.name).join(", ")}`;
     // let contentListType = codument.createElement("li");
     // contentListType.innerText = `Type: ${pokemon.types}`;
 
