@@ -32,19 +32,21 @@
       <ul class="pokemon-list"></ul>
 
       <!-- Create Pokemon card here -->
-      <section class="pokemon-card__hidden">
-        <header class="pokemon-card__title">
-          <h1>Bulbasaur</h1>
-          <button class="pokemon-card__close-button">X</button>
-        </header>
-        <main>
-          <img />
-          <ul>
-            <li>Type: grass</li>
-            <li>Height: 7</li>
-          </ul>
-        </main>
-      </section>
+      <div id="modal-container">
+        <section class="pokemon-card">
+          <header class="pokemon-card__title">
+            <h1>Bulbasaur</h1>
+            <button class="modal-close">X</button>
+          </header>
+          <main>
+            <img />
+            <ul>
+              <li>Type: grass</li>
+              <li>Height: 7</li>
+            </ul>
+          </main>
+        </section>
+      </div>
     </main>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>

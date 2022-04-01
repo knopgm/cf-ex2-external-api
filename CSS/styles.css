@@ -99,30 +99,35 @@ h3 {
   color: black;
   background-color: blanchedalmond;
 }
+#modal-container {
+  display: none;
+}
 
-.pokemon-card__hidden {
-  /* display: none; */
+#modal-container.is-visible {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 360px;
+}
+
+.pokemon-card {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
-  margin: 10px;
-  max-width: 360px;
   border-radius: 5%;
   box-shadow: 10px 10px 20px grey;
+  padding: 20px;
 }
 .pokemon-card__title {
   display: flex;
   justify-content: space-between;
 }
 
-.pokemon-card__close-button {
+.modal-close {
   color: var(--pokemon-blue);
   border: none;
   padding: 10px;
