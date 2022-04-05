@@ -44,10 +44,18 @@ h3 {
 }
 
 .page-header {
-  /* background-color: lightgray; */
   display: flex;
   align-items: center;
   max-height: 90px;
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0px 20px 0px;
+}
+
+.page-header__logo_wrapper {
+  display: flex;
+  align-items: center;
+  max-height: 75px;
   width: 100%;
   padding: 20px;
   margin: 10px 0px 20px 0px;
@@ -68,31 +76,26 @@ h3 {
 
 .main_wrapper {
   background-color: aliceblue;
+  margin-top: 80px;
 }
 
 .pokedex-title {
-  /* background-color: lightgrey; */
   text-align: center;
 }
 
 .pokemon-list {
-  /* background-color: lightpink; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.pokemonButton {
+
+.btn-primary {
   background-color: var(--pokemon-blue);
   margin: 6px;
   border: none;
   border-radius: 5%;
-  color: white;
   width: 150px;
   padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }
 
 .loading {
@@ -101,38 +104,4 @@ h3 {
 }
 #modal-container {
   display: none;
-}
-
-#modal-container.is-visible {
-  display: block;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 360px;
-}
-
-.pokemon-card {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  background-color: white;
-  border-radius: 5%;
-  box-shadow: 10px 10px 20px grey;
-  padding: 20px;
-}
-.pokemon-card__title {
-  display: flex;
-  justify-content: space-between;
-}
-
-.modal-close {
-  color: var(--pokemon-blue);
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }
