@@ -51,8 +51,6 @@ let pokemonRepository = (function () {
             detailsUrl: item.url,
           };
           add(pokemon);
-          // To console log all pokemons:
-          // console.log(pokemon);
         });
       })
       .catch(function (e) {
@@ -84,7 +82,6 @@ let pokemonRepository = (function () {
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       showModal(pokemon);
-      // console.log(pokemon);
     });
   }
 
@@ -176,12 +173,3 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-// function to serach for a specific pokemon
-// function pokemonSearch(pokemon) {
-//   const result = pokemonList.filter((element) => {
-//     return element.name === pokemon;
-//   });
-
-//   return result;
-// }

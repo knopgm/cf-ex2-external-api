@@ -5,4 +5,7 @@ This project will mock-up a pokedex, for users to search into a pokemons list in
 ## Project dependencies
 
 - JavaScript ES6
-- ...
+- HTML
+- CSS
+- jQuery
+- Bootstrap
