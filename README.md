@@ -18,4 +18,4 @@ This project will mock-up a pokedex, for users to search into a pokemons list in
 
 ## API
 
-[https://pokeapi.co/api](https://pokeapi.co/api)
+[https://pokeapi.co](https://pokeapi.co)
